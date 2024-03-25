@@ -1,12 +1,25 @@
 package hu.bme.mit.train.controller;
 
 import hu.bme.mit.train.interfaces.TrainController;
+import java.util.concurrent.TimeUnit;
 
 public class TrainControllerImpl implements TrainController {
 
 	private int step = 0;
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
+
+	@Override
+	public void startSimulation(){
+		while(true){
+			try {
+				TimeUnit.SECONDS.sleep(1);
+				this.followSpeed();
+			} catch (InterruptedException e) {
+				// meow daddy
+			}
+		}
+	}
 
 	@Override
 	public void followSpeed() {
