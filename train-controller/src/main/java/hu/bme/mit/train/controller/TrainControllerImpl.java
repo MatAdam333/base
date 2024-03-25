@@ -14,7 +14,7 @@ public class TrainControllerImpl implements TrainController {
 
 	public TrainControllerImpl() {
 
-		java.util.TimerTask tt = new TimerTask(){
+		java.util.TimerTask speedTimerTask = new TimerTask(){
 			@Override
 			public void run() {
 				this.followSpeed();
