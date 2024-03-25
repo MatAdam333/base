@@ -22,7 +22,8 @@ jobs:
         with:
           name: unit-tests-jacoco
           path: exportJacoco/jacoco-fast.exec
- merge-jacoco-report:
+
+  merge-jacoco-report:
     name: Jacoco Merge Results
     needs:
       - unit-tests
@@ -34,13 +35,13 @@ jobs:
           java-version: '11'
       - uses: actions/download-artifact@v2
         with:
-          name: integration-tests-jacoco
+          name: unit-tests-jacoco
           path: target/
       - uses: actions/download-artifact@v2
         with:
-          name: unit-tests-jacoco
+          name: integration-tests-jacoco
           path: target/
-      - name: merge results
+      - name: Merge results
         run: |
           mvn jacoco:merge package jacoco:report verify -DskipTests=true
       - name: Upload jacoco coverage despite the check result
