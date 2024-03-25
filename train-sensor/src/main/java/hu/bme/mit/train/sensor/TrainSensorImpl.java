@@ -3,7 +3,6 @@ package hu.bme.mit.train.sensor;
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
-import java.util.Math;
 
 public class TrainSensorImpl implements TrainSensor {
 
@@ -25,7 +24,7 @@ public class TrainSensorImpl implements TrainSensor {
 	public void overrideSpeedLimit(int speedLimit) {
 		if(speedLimit<0 || speedLimit>500)
 			user.setAlarmState(true);
-		else if (Math.abs(controller.getReferenceSpeed() - speedLimit) > 0.5 * controller.getReferenceSpeed())
+		else if (controller.getReferenceSpeed() - speedLimit > 0.5 * controller.getReferenceSpeed())
 			user.setAlarmState(true);
 		else
 			user.setAlarmState(false);
