@@ -21,7 +21,7 @@ public class TrainSensorTest {
         mockC = mock(TrainController.class);
         mockU = mock(TrainUser.class);
 
-        sensor = new TrainSensor(mockC, mockU);
+        sensor = new TrainSensorImpl(mockC, mockU);
     }
 
     @Test
